@@ -1,0 +1,64 @@
+div {
+    background-color: aliceblue;
+    width: 250px;
+    height: 220px;
+    margin-left: 60px;
+    margin-top: 100px;
+
+    border-radius: 5px;
+}
+
+section.mail {
+    padding-left: 30px;
+    padding-top: 30px;
+    font-family: fantasy;
+    font-size: small;
+    color: blue;
+}
+
+section.pwd {
+    padding-left: 30px;
+    font-family: fantasy;
+    font-size: small;
+    color: blue;
+
+}
+
+section {
+    padding-left: 30px;
+}
+
+button.login {
+    border: blue;
+    border-radius: 3px;
+    width: 190px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: blue;
+    color: aliceblue;
+}
+
+input {
+    border: 1px solid black;
+    margin-top: 4px;
+    color: blue;
+    padding: 3px;
+}
+.image {
+    position: absolute;
+    top: -25px;
+    left: 100px;
+    overflow: hidden; 
+    width: 50px;
+    height: 50px;
+    background-color: #eaeaea; /* You can change the background color as needed */
+    border-radius: 50%;
+    /* This ensures the icon doesn't overflow beyond the circular shape */
+  }
+
+  .image img{
+    width: 100%; /* This ensures the image fills the container */
+    height: 100%;
+  }

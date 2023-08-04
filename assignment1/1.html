@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Survey Form</title>
+    <link rel="stylesheet" href="1.css">
+</head>
+
+<body>
+    <div class="form">
+        <h3>Beginner Survey Form</h3>
+        <form action="#">
+            <fieldset class="survey">
+                <legend>Personal Details</legend>
+                <div>
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" placeholder="Enter Your Name" />
+                </div>
+                <br>
+                <div>
+                    <label for="address">Address: </label>
+                    <input type="address" id="address" placeholder="Enter Your Address" />
+                </div>
+                <br>
+
+                <div>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" placeholder="Enter Your Email" />
+                </div>
+                <br>
+
+                <div>
+                    <label for="number">Number: </label>
+                    <input type="text" id="number" placeholder="Enter Your Number" />
+                </div>
+                <br>
+                <div>
+                    <label for="gender">Please select your gender:</label>
+                    <br>
+                    <input type="radio" id="male" name="male" value="M">
+                    <label for="male">Male</label><br>
+
+                    <input type="radio" id="female" name="female" value="F">
+                    <label for="female">Female</label><br>
+
+                    <input type="radio" id="non" name="non" value="N">
+                    <label for="non">Non-binary</label><br>
+
+                    <input type="radio" id="notsay" name="notsay" value="NS">
+                    <label for="notsay">Prefer Not To Say</label>
+                </div>
+            </fieldset>
+        </form>
+
+
+        <form action="#">
+            <fieldset>
+                <legend>Additional Information</legend>
+                <p>Enter Your Background Information</p>
+                <div class="textarea-container">
+                    <textarea name="textarea" rows="3" cols="32"
+                        placeholder="Enter Your Background Information"></textarea>
+                </div>
+            </fieldset>
+        </form>
+
+        <div>
+            <button class="favorite styled" type="button">
+                Submit
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

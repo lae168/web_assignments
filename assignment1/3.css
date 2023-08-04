@@ -1,0 +1,241 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #212E52;
+}
+
+header {
+    background-color: rgb(32, 42, 68);
+
+    padding: 20px;
+
+
+}
+
+.price{
+    color: #fff;
+}
+
+nav {
+    margin-left: 300px;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    color: #fff;
+    /* Text color for the navigation links */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 2px;
+    display: flex;
+}
+
+
+
+nav li {
+    margin-left: 10px;
+    margin-right: 40px;
+    /* Add some spacing between navigation items */
+}
+.icon{
+    margin-top: 30px;
+}
+
+img {
+    
+    margin-bottom: -6px;
+    margin-top: -20px;
+    margin-left: 1px;
+    /* margin-right: 40px; */
+    width: 30px;
+    height: 20px;
+    /* background-color: aqua; */
+   
+}
+
+nav a {
+    text-decoration: none;
+    color: aqua;
+}
+
+.get-started-btn {
+    padding: 7px 10px;
+    background-color: aqua;
+    border: 1px;
+    border-radius: 20px;
+    color: #fff;
+    /* Button text color */
+    font-size: 10px;
+    cursor: pointer;
+    color: grey;
+}
+
+.get-started-btn:hover {
+    background-color: #FF6347;
+    /* Button background color on hover */
+}
+
+footer {
+    background-color: aqua;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    /* margin-top:500px; */
+    height: 100px;
+}
+
+.smallBox {
+    background-color: rgb(32, 42, 68);
+    color: aqua;
+    min-width: 290px;
+    min-height: 250px;
+    /* margin-top: 100px; */
+    margin-left: 40px;
+    /* margin-bottom: 15px; */
+
+}
+
+.p1 {
+    padding-left: 55px;
+    padding-top: 40px;
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.h3 {
+    padding-left: 100px;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+}
+
+.range {
+    padding-left: 20px;
+    letter-spacing: -1px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.subscride {
+    font-size: x-small;
+    padding-left: 40px;
+    padding-top: 25px;
+}
+
+.volume {
+    -webkit-appearance: none;
+    /* Remove default appearance */
+    width: 60%;
+    height: 4px;
+    border-radius: 3px;
+    background-color: rgb(221, 160, 221);
+}
+
+div.pricing {
+    margin-top: 0px;
+    margin-left: 30%;
+    padding: 30px;
+    width: 550px;
+    /* background-color: #FF6347; */
+    color: aqua;
+    letter-spacing: -1px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.priceTitle {
+    padding-left: 180px;
+    font-size: x-large;
+    font-weight: 10000;
+
+}
+
+.paragraph {
+    color: white;
+    font-display: inherit;
+    letter-spacing: -1px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+
+.largeBox {
+    border-bottom: solid 1px grey;
+    
+    background-color: aqua;
+    color: black;
+    min-width: 300px;
+    min-height: 350px;
+    font-size: 13px;
+    font-weight: 100;
+    border-radius: 3px;
+}
+
+.container {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+    /* padding: 20px; */
+}
+
+
+
+.mark-sign {
+    font-size: larger;
+    color: rgb(159, 90, 159);
+    margin-right: 5px;
+}
+
+.empCount {
+    padding-left: 20%;
+    padding-top: 50px;
+    font-size: large;
+}
+
+.plan {
+    padding-left: 100px;
+    padding-top: 30px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.getInTouch {
+    background-color: rgb(221, 160, 221);
+    color: aqua;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+    font-weight: 600;
+
+}
+
+.btn {
+    padding-left: 80px;
+    padding-top: 20px;
+}
+
+.twoBoxes {
+    /* background-color: beige; */
+    position: absolute;
+    top: 200px;
+    width: 600px;
+    height: 400px;
+    padding-left: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.footer{
+    margin-top: 200px;
+    width: 100%;
+    height: 350px;
+   
+}
