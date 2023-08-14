@@ -20,9 +20,9 @@ body {
 }
 
 .p1 {
-    
-    padding-left: 45px;
-    padding-top:-10px;
+
+    text-align: center;
+    padding-top: -10px;
     font-weight: bolder;
     color: bisque;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -35,7 +35,7 @@ body {
 }
 
 .circle {
-    
+
     width: 40px;
     height: 40px;
     background-color: rgb(13, 236, 13);
@@ -44,7 +44,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
 img {
@@ -54,49 +53,10 @@ img {
     border-radius: 10%;
 }
 
-.gdSection{
+.gdSection {
     padding-left: 70px;
     padding-top: 20px;
 }
-
-.p2 {
-    
-    padding-left: 30px;
-    padding-top:-10px;
-    font-weight: bolder;
-    color: bisque;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.p3 {
-    
-    padding-left: 64px;
-    padding-top:-10px;
-    font-weight: bolder;
-    color: bisque;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.p4 {
-    
-    padding-left: 30px;
-    padding-top:-10px;
-    font-weight: bolder;
-    color: bisque;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.p5 {
-    
-    padding-left: 26px;
-    padding-top:-10px;
-    font-weight: bolder;
-    color: bisque;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-
-
 .programs {
     margin-left: 250px;
     display: flex;

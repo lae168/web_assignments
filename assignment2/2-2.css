@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  background-color: #08284a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #5897da;
+}
+
+.btn-page {
+  background-color: gainsboro;
+  margin-left: 10px;
+}
+
+.btn.btn-page img {
+  border: 2px solid white;
+  background-color: white;
+  height: 10px;
+  width: 10px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.table-row-data {
+  border-collapse: collapse;
+  border-bottom: 2px solid ghostwhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: small;
+
+}
+
+.table-cell {
+  flex: 10;
+  /* padding: 8px; */
+}
+
+.table-cell.photo {
+
+  margin-left: -90px;
+}
+
+
+
+.table-cell.login {
+  margin-left: -90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-cell.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-cell.mail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  /* Prevent wrapping */
+  overflow: hidden;
+  /* Hide overflowing content */
+  text-overflow: ellipsis;
+}
+
+
+.table-cell.staff {
+  /* background-color: beige; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-cell.actions {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-cell.actions img {
+  padding: 2px;
+  margin: 5px;
+  width: 15x;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.table-cell.photo img {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  width: 25px;
+  height: 25px;
+}
+
+@media(max-width: 830px) {
+  .table-cell.id {
+    display: none;
+  }
+
+  .table-row {
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: medium;
+  }
+}
+
+
+@media(max-width: 700px) {
+  .table-cell.staff {
+    display: none;
+  }
+
+  .table-cell.actions {
+    display: none;
+  }
+}

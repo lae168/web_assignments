@@ -1,0 +1,186 @@
+body {
+
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: small;
+}
+
+.header {
+    height: 50px;
+    background-color: white;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-right: 20px;
+
+    border-bottom: 1px solid gainsboro;
+}
+
+.header h1 {
+    margin: 0;
+
+}
+
+.side-menu {
+    margin-top: 50px;
+    width: 200px;
+    background-color: #f2f2f2;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding-top: 10px;
+    border-top: 1px solid gainsboro;
+}
+
+.menu-item {
+    padding: 10px 40px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+img {
+    margin-left: -20px;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+
+}
+
+.menu-item:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 474px){
+   
+    .notiAndBtn{
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 1350px){
+    .title{
+        display: none;
+    }
+
+}
+
+@media (max-width:298px){
+    .header{
+    color:#f2f2f2ed;
+    }
+}
+
+.header h1 {
+    
+    color: #333;
+    font-size: small;
+    
+    padding-left: 210px;
+    
+}
+
+.header-icon {
+    font-size: 15px;
+    margin-right: 10px;
+    color: #f2f2f2;
+
+}
+
+.header-button {
+    padding: 5px 40px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    border: none;
+    border-bottom: 0.5px solid gainsboro;
+}
+
+.box {
+    background-color: #f2f2f2ed;
+    width: 199px;
+    height: 65px;
+    border-bottom: 8px solid gainsboro;
+    border-right: 1px solid gainsboro;
+}
+
+.title {
+    margin-left: -830px;
+    color: black;
+    font-size: small;
+}
+
+.programs {
+    padding: 5px;
+    margin-left: 200px;
+    height: 200px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.program1 {
+    background: linear-gradient(to right, #3399FF, #66CCFF);
+    color: #fff;
+
+    width: 279px;
+    height: 70px;
+    border-radius: 10px;
+
+}
+
+.program2 {
+    background: linear-gradient(to right, #FF0000, #FF6666);
+    color: #fff;
+
+    width: 279px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.program3 {
+    background: linear-gradient(to right, #33FF33, #66FF66);
+    color: #fff;
+    width: 279px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.program4 {
+    /* background-color: orange; */
+    color: #fff;
+    background: linear-gradient(to right, #FFA500, #FFD700);
+    width: 279px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.sec1 {
+    padding-top: -20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 270px;
+    display: flex;
+    font-size: small;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.div1 {
+    margin-top: 20px;
+}
+
+.p1 {
+    padding-left: 10px;
+    font-size: xx-small;
+    font-weight: bolder;
+}

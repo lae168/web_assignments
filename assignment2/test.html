@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .header {
+    background-color: #444;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-page {
+    margin-left: 10px;
+  }
+
+  .table-row {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+
+  .table-cell {
+    flex: 1;
+    padding: 8px;
+  }
+
+  .table-cell.photo {
+    flex: 0.5;
+  }
+
+  .table-cell.photo img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <!-- ... Header content ... -->
+  </div>
+  
+  <div class="table-row">
+    <div class="table-cell">ID</div>
+    <div class="table-cell photo">Photo</div>
+    <div class="table-cell">Login Name</div>
+    <div class="table-cell">Name</div>
+    <div class="table-cell">Email</div>
+    <div class="table-cell">Staff Own </div>
+    <div class="table-cell">Actions </div>
+  </div>
+
+  <!-- Sample data rows -->
+  <div class="table-row">
+    <div class="table-cell">1</div>
+    <div class="table-cell photo"><img src="sample_photo.jpg" alt="User Photo"></div>
+    <div class="table-cell">user123</div>
+    <div class="table-cell">John Doe</div>
+    <div class="table-cell">john@example.com</div>
+    <div class="table-cell">1</div>
+    <div class="table-cell">Edit / Delete</div>
+  </div>
+
+  <div class="table-row">
+    <div class="table-cell">2</div>
+    <div class="table-cell photo"><img src="sample_photo.jpg" alt="User Photo"></div>
+    <div class="table-cell">user456</div>
+    <div class="table-cell">Jane Smith</div>
+    <div class="table-cell">jane@example.com</div>
+    <div class="table-cell">1</div>
+    <div class="table-cell">Edit / Delete</div>
+  </div>
+  
+  <!-- Add more data rows as needed -->
+
+</body>
+</html>
