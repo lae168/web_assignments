@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlertBox</title>
+    <link rel="stylesheet" href="/assignment3/assignment3.css">
+</head>
+
+<body>
+    <header>
+        <h3>Validation Page</h3>
+        <nav>
+            <a href="alertbox.html">Alert Box</a>
+            <a href="tools.html">Tools</a>
+            <a href="form.html" id="form">Form</a>
+        </nav>
+    </header>
+
+
+    <div class="login-container">
+        <h2>Login Form</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <p id="errorName" class="error"></p>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <p id="errorMail" class="error"></p>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <p id="errorPwd" class="error"></p>
+            </div>
+
+
+            <button class="login-button" id="login-btn">Log In</button>
+        </form>
+    </div>
+    <script src="form.js"></script>
+
+</body>
+
+</html>

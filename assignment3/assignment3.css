@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+    color: white;
+    padding: 5px;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    border-top: 1px solid rgb(236, 225, 206);
+    border-bottom: 1px solid rgb(236, 225, 206);
+}
+
+nav a {
+    color: black;
+    font-size: small;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+a:hover {
+    color: lightskyblue;
+    border-bottom: 3px solid lightskyblue;
+}
+
+h3{
+    color: black;
+    
+}
+
+button {
+    display: block;
+    margin: 20% auto;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: rgb(236, 225, 206);
+    color: blue;
+    border: none;
+    cursor: pointer;
+}
+
+.dialog {
+    border-radius: 20px;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    margin-top: -10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#closeDialogButton {
+    margin-left: 1px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    background-color: lightcyan;
+    color: black;
+    font-weight: bolder;
+}
+
+#title {
+    color: black;
+    font-weight: bolder;
+}
+
+#text {
+    font-size: small;
+}
+
+.login-container {
+    display: block;
+    margin: 10% auto;
+    padding: 8px 10px;
+    width: 250px;
+
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 10px;
+    font-size: medium;
+    display: flex;
+    margin-left: 8%;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-size: small;
+}
+
+.form-group input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-button {
+    width: 85%;
+    padding: 5px;
+    margin-top: auto;
+    margin-bottom: 10%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    display: block;
+    color: red;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+.todo-container {
+    display: block;
+    margin: 0% auto;
+    padding: 8px 10px;
+    width: 250px;
+
+}
+
+.add-button {
+    width: 30%;
+    height: 30px;
+    padding: 6px;
+    margin-top: auto;
+    margin-bottom: 10%;
+    margin-left: 0px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+.titleTodo {
+    padding-left: 15%;
+}
+
+.input-group {
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+
+
+ul#list {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    
+    display: flex;
+    justify-content: space-between;
+    width: 59%;
+    background-color: white;
+    margin: 10px 0;
+    padding: 5px;
+    line-break: initial;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+    border: 1px solid #007bff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Change background color on hover */
+li:hover {
+    background-color: #e0e0e0;
+}
+
+span {
+    
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(241, 79, 79);
+    
+}

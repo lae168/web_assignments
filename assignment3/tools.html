@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlertBox</title>
+    <link rel="stylesheet" href="assignment3.css">
+</head>
+
+<body>
+    <header>
+        <h3>Tools</h3>
+        <nav>
+            <a href="alertbox.html">Alert Box</a>
+            <a href="tools.html" id="tools">Tools</a>
+            <a href="form.html">Form</a>
+        </nav>
+    </header>
+
+
+    <div class="todo-container">
+        <h4 class="titleTodo">Todo App</h4>
+        <input type="text" class="input-group" id="search" placeholder="Search Todo" onkeyup="filterTasks()">
+        <ul id="list"></ul>
+        <input type="text"  class="input-group" id="enterNew" placeholder="Enter New todo">
+        <button id="add" class="add-button" onclick="addItem()">Add Todo</button>
+    </div>
+    <script src="tools.js"></script>
+</body>
+
+</html>
