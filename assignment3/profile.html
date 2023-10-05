@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <span id="name"></span>
+    <button type="button" onclick="logOut()"> Logout</button>
+    <script src="profile.js"></script>
+
+    <script>
+        function logOut(){
+            console.log("LogOut");
+            localStorage.removeItem('form_prj');
+            localStorage.clear();
+            window.location.href = "form.html";
+        }
+    </script>
+</body>
+</html>

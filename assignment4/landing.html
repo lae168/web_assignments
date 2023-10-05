@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Landing Page</title>
+  <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <div class="left">Home Page</div>
+      <button id="createPost">&#43;</button>
+      <div class="right" id="loginBtnContainer">
+        <span id="name"></span>
+        <div id="buttonContainer">
+          <!-- Buttons will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <ul id="postList"></ul>
+  </div>
+  <div id="dataDisplay"></div>
+  <script src="landing.js"></script>
+  <script>
+    function logOut() {
+      console.log("LogOut");
+      localStorage.removeItem('form_prj');
+      localStorage.clear();
+      window.location.href = "form.html";
+    }
+  </script>
+
+</body>
+
+</html>

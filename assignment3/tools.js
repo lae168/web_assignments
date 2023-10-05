@@ -1,6 +1,7 @@
 
 const toolAnchor = document.getElementById("tools");
 
+// Call the function to change the button's color when the page loads
 function changeAnchorColor() {
   toolAnchor.style.color = "blue";
   toolAnchor.style.borderBottomColor = "blue"
@@ -20,7 +21,7 @@ function addItem() {
     var deleteIcon = document.createElement("span");
     deleteIcon.className = "delete-icon";
     deleteIcon.innerHTML = "&#x1F5D1;"; //
-    // deleteIcon.style.color = "red";
+   
     listItem.appendChild(deleteIcon);
     deleteIcon.onclick = function () {
       listItem.remove();
