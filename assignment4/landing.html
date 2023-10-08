@@ -8,14 +8,13 @@
 
 <body>
   <nav>
-    <div class="container">
-      <div class="left">Home Page</div>
-      <button id="createPost">&#43;</button>
-      <div class="right" id="loginBtnContainer">
+    <div class="header_container">
+      <div class="left">Home Page
+        <button id="createPost">Create Post&#43;</button>
         <span id="name"></span>
-        <div id="buttonContainer">
+        <span id="buttonContainer">
           <!-- Buttons will be displayed here -->
-        </div>
+        </span>
       </div>
     </div>
   </nav>
@@ -23,7 +22,11 @@
   <div class="container">
     <ul id="postList"></ul>
   </div>
-  <div id="dataDisplay"></div>
+  <div id="dataDisplay" class="grid-container"></div>
+
+
+ 
+
   <script src="landing.js"></script>
   <script>
     function logOut() {

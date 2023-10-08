@@ -3,24 +3,8 @@ const postsContainer = document.getElementById('posts');
 const postList = document.getElementById('postList');
 const dataDisplay = document.getElementById('dataDisplay')
 
-
-
-// window.addEventListener("load", () => {
-//   if (!localStorage.getItem('form_prj')) {
-//     window.location.href = "form.html";
-//   }
-
-
-//   let accName = document.getElementById("name");
-//   let { name, ...storage } = JSON.parse(localStorage.getItem('form_prj'));
-
-//   accName.innerHTML = `${name}`;
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   const buttonContainer = document.getElementById('buttonContainer');
-
-
 
   // Create and append the appropriate button based on whether the user is logged in
   const button = document.createElement('button');
@@ -45,195 +29,252 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   buttonContainer.appendChild(button);
-});
-let postData = [];
 
-fetch('blog.json')
-  .then(response => response.json())
-  .then(data => {
-    postData = data.blogs.slice(-20);  // Get the last 20 posts
-    displayDataList();
+  let postData = [];
 
-  })
-  .catch(error => console.error('Error fetching data:', error));
+  fetch('blog.json')
+    .then(response => response.json())
+    .then(data => {
+      postData = data.blogs.slice(-20);  // Get the last 20 posts
+      displayDataList();
 
-function displayDataList() {
+    })
+    .catch(error => console.error('Error fetching data:', error));
 
-  postList.innerHTML = '';
-  postData.forEach(post => {
-    console.log("showing data");
-    const postItem = document.createElement('div');
-    postItem.innerHTML = `<h3>${post.id}</h3><p>${post.content}</p></br>`;
-    postItem.addEventListener('click', () => {
-      showDetails(post);
-      // postList.style.display = "none";
+  function displayDataList() {
+
+    postList.innerHTML = '';
+    postData.forEach(post => {
+      console.log("showing data");
+      const postItem = document.createElement('li');
+      postItem.classList.add('grid-item');
+      postItem.innerHTML =
+        `<img src=${post.imageUrl} alt="Post Image"><div class="grid-item-content"><p>${post.title}</p></br><p>${post.content}</p></br><p>${post.id}</p></div></br>`;
+      postItem.addEventListener('click', () => {
+        showDetails(post);
+        // postList.style.display = "none";
+      });
+      postList.appendChild(postItem);
     });
-    postList.appendChild(postItem);
-  });
-}
+  }
 
-function showDetails(item) {
+  function showDetails(item) {
 
 
-  if (!localStorage.getItem('form_prj')) {
-    window.location.href = "form.html";
-  } else {
-    // Create modal overlay
-    const modalOverlay = document.createElement('div');
-    modalOverlay.classList.add('modal-overlay');
+    if (!localStorage.getItem('form_prj')) {
+      window.location.href = "form.html";
+    } else {
+      // Create modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.classList.add('modal-overlay');
 
-    // Create modal content
-    const modalContent = document.createElement('div');
-    modalContent.classList.add('modal-content');
+      // Create modal content
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
 
-    const backIcon = document.createElement('span');
-    backIcon.innerHTML = '&#8592;&nbsp;';
-    backIcon.style.cursor = 'pointer';
-    backIcon.addEventListener('click', () => {
-      modalOverlay.remove();
-    });
-
-    const itemName = document.createElement('h2');
-    itemName.textContent = item.title;
-
-    const itemDescription = document.createElement('p');
-    itemDescription.textContent = item.content;
-
-    const editButton = document.createElement('button');
-    editButton.textContent = 'Edit';
-    editButton.addEventListener('click', () => {
-
-      itemName.style.display = 'none';
-      itemDescription.style.display = 'none';
-      editButton.style.display = 'none';
-      deleteButton.style.display = 'none';
-
-      // Create and display the edit form
-      const editForm = document.createElement('div');
-      editForm.innerHTML = `
-      <h2>Edit Post</h2>
-      <label for="editTitle">Title:</label>
-      <input type="text" id="editTitle" value="${item.title}">
-      <label for="editContent">Content:</label>
-      <textarea id="editContent">${item.content}</textarea>
-      <button id="saveEdit">Save</button>
-    `;
-      modalContent.appendChild(editForm);
-
-      const saveEditButton = document.getElementById('saveEdit');
-      saveEditButton.addEventListener('click', () => {
-        const editedTitle = document.getElementById('editTitle').value;
-        const editedContent = document.getElementById('editContent').value;
-
-        // Update the postData array and local storage
-        postData = postData.map(post => {
-          if (post.id === item.id) {
-            return { ...post, title: editedTitle, content: editedContent };
-          }
-          return post;
-        });
-        localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
-
-        // Update the post list and close the modal
-        displayDataList();
+      const backIcon = document.createElement('span');
+      backIcon.innerHTML = '&#8592;&nbsp;';
+      backIcon.style.cursor = 'pointer';
+      backIcon.addEventListener('click', () => {
         modalOverlay.remove();
       });
-    });
 
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.addEventListener('click', () => {
-      const confirmDelete = confirm('Are you sure you want to delete this post?');
-      if (confirmDelete) {
-        postData = postData.filter(post => post.id !== item.id);
-        localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
+      const itemImage = document.createElement('img');
+      itemImage.classList.add('item_image');
+      itemImage.src = item.imageUrl;
+
+      const itemName = document.createElement('h2');
+      itemName.textContent = item.title;
+
+      const itemDescription = document.createElement('p');
+      itemDescription.textContent = item.content;
+
+
+      const itemDate = document.createElement('p');
+      itemDate.textContent = item.id;
+
+
+      const editButton = document.createElement('button');
+      editButton.classList.add('edit_btn');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+
+        itemImage.style.display = 'none';
+        itemName.style.display = 'none';
+        itemDescription.style.display = 'none';
+        itemDate.style.display = 'none';
+        editButton.style.display = 'none';
+        deleteButton.style.display = 'none';
+
+        // Create and display the edit form
+        const editForm = document.createElement('div');
+        editForm.classList.add('editFormClass');
+        editForm.innerHTML = `
+      <h2>Edit Post</h2>
+      <label for="editImageUrl">Image URL:</label></br>
+      <input type="text" id="editImageUrl" value="${item.imageUrl}"></br></br>
+      <label for="editTitle">Title:</label></br>
+      <input type="text" id="editTitle" value="${item.title}"></br></br>
+      <label for="editContent">Content:</label></br>
+      <textarea id="editContent">${item.content}</textarea></br></br>
+      <button id="saveEdit">Save</button></br></br>
+    `;
+        modalContent.appendChild(editForm);
+
+        const saveEditButton = document.getElementById('saveEdit');
+        saveEditButton.addEventListener('click', () => {
+          const editedTitle = document.getElementById('editTitle').value;
+          const editedContent = document.getElementById('editContent').value;
+          const editedImageUrl = document.getElementById('editImageUrl').value;
+          // Update the postData array and local storage
+          postData = postData.map(post => {
+            if (post.id === item.id) {
+              return { ...post, imageUrl: editedImageUrl, title: editedTitle, content: editedContent };
+            }
+            return post;
+          });
+          localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
+
+          // Update the post list and close the modal
+          displayDataList();
+          modalOverlay.remove();
+        });
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.classList.add('delete_btn');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        const confirmDelete = confirm('Are you sure you want to delete this post?');
+        if (confirmDelete) {
+          postData = postData.filter(post => post.id !== item.id);
+          localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
+          modalOverlay.remove();
+          displayDataList();
+        }
+      });
+
+      const createButton = document.getElementById("createPost");
+
+      createButton.addEventListener('click', createPost);
+
+
+      // Append elements to the modal content
+      modalContent.appendChild(backIcon);
+
+      modalContent.appendChild(itemName);
+      modalContent.appendChild(itemImage);
+      modalContent.appendChild(itemDescription);
+      modalContent.appendChild(itemDate);
+      modalContent.appendChild(editButton);
+      modalContent.appendChild(deleteButton);
+
+
+      // Append modal content to modal overlay
+      modalOverlay.appendChild(modalContent);
+      document.body.appendChild(modalOverlay);
+    }
+  }
+
+
+
+  function createPost() {
+    if (!localStorage.getItem('form_prj')) {
+      window.location.href = "form.html";
+    } else {
+      // Create modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.classList.add('modal-overlay');
+
+      // Create modal content
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('modal-content');
+
+      const backIcon = document.createElement('span');
+      backIcon.innerHTML = '&#8592;&nbsp;';
+      backIcon.style.cursor = 'pointer';
+      backIcon.addEventListener('click', () => {
         modalOverlay.remove();
+      });
+
+      const titleLabel = document.createElement('label');
+      titleLabel.textContent = 'Title:';
+      const titleInput = document.createElement('input');
+      titleInput.type = 'text';
+      titleInput.id = 'postTitle';
+
+      const contentLabel = document.createElement('label');
+      contentLabel.textContent = 'Content:';
+      const contentInput = document.createElement('textarea');
+      contentInput.id = 'postContent';
+
+      const imageUrlLabel = document.createElement('label');
+      imageUrlLabel.textContent = 'Image URL (optional):';
+      const imageUrlInput = document.createElement('input');
+      imageUrlInput.type = 'text';
+      imageUrlInput.id = 'postImageUrl';
+
+      const submitButton = document.createElement('button');
+      submitButton.textContent = 'Create Post';
+      submitButton.id = 'createBtn'
+      submitButton.addEventListener('click', () => {
+        const title = titleInput.value;
+        const content = contentInput.value;
+        const imageUrl = imageUrlInput.value;
+        const timestamp = Date.now(); // Get current timestamp in milliseconds
+
+        const dateObj = new Date(timestamp); // Create a Date object using the timestamp
+
+        // Format the date components
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+
+        // Create a formatted date string
+        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        const newPost = {
+          id: formattedDate,
+          title: title || 'Untitled Post',
+          content: content || 'No content available.',
+          imageUrl: imageUrl || ''
+        };
+
+        postData.unshift(newPost);
+        localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
+
         displayDataList();
-      }
-    });
+        postList.scrollTop = 0;
 
-  const createButton = document.getElementById("createPost");
-  
-  createButton.addEventListener('click', createPost);
-  
+        // Close the modal
+        modalOverlay.remove();
+      });
+      modalContent.appendChild(backIcon);
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(titleLabel);
+      modalContent.appendChild(titleInput);
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(contentLabel);
+      modalContent.appendChild(contentInput);
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(imageUrlLabel);
+      modalContent.appendChild(imageUrlInput);
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(document.createElement('br'));
+      modalContent.appendChild(submitButton);
 
-    // Append elements to the modal content
-    modalContent.appendChild(backIcon);
-    modalContent.appendChild(itemName);
-    modalContent.appendChild(itemDescription);
-    modalContent.appendChild(editButton);
-    modalContent.appendChild(deleteButton);
-
-
-    // Append modal content to modal overlay
-    modalOverlay.appendChild(modalContent);
-    document.body.appendChild(modalOverlay);
+      modalOverlay.appendChild(modalContent);
+      document.body.appendChild(modalOverlay);
+    }
   }
-}
-
-
-function editItem(item) {
-  dataDisplay.innerHTML = ''; // Clear previous content
-
-  const editForm = document.createElement('div');
-  editForm.innerHTML = `
-    <h2>Edit Post</h2>
-    <label for="editTitle">Title:</label>
-    <input type="text" id="editTitle" value="${item.title}">
-    <label for="editContent">Content:</label>
-    <textarea id="editContent">${item.content}</textarea>
-    <button id="saveEdit">Save</button>
-  `;
-
-  dataDisplay.appendChild(editForm);
-
-  const saveEditButton = document.getElementById('saveEdit');
-  saveEditButton.addEventListener('click', () => {
-    const editedTitle = document.getElementById('editTitle').value;
-    const editedContent = document.getElementById('editContent').value;
-
-    const newData = postData.map(post => {
-      if (post.id === item.id) {
-        return { ...post, title: editedTitle, content: editedContent };
-      }
-      return post;
-    });
-
-    localStorage.setItem('postData', JSON.stringify(newData));
-    postData = newData; // Update the local data
-    displayDataList(); // Update the list after editing
-    showDetails({ id: item.id, title: editedTitle, content: editedContent });
-    // dataDisplay.style.display ="none"; //NO2
-  });
-}
-
-function createPost() {
-  if (!localStorage.getItem('form_prj')) {
-    window.location.href = "form.html";
-  } else {
-    const title = prompt('Enter the title of the post:');
-    const content = prompt('Enter the content of the post:');
-    const imageUrl = prompt('Enter the image URL for the post (optional):');
-
-    const newPost = {
-      id: Date.now(), // Use a unique identifier (e.g., timestamp) as the ID
-      title: title || 'Untitled Post',
-      content: content || 'No content available.',
-      imageUrl: imageUrl || ''
-    };
-
-    // Add the new post at the beginning of the postData array
-    postData.unshift(newPost);
-    localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
-
-    // Update the post list and display the new post at the top
-    displayDataList();
-
-    // Scroll to the top of the post list to show the new post
-    postList.scrollTop = 0;
-  }
-}
 
 
 
 
+
+});

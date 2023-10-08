@@ -1,57 +1,196 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav {
-    background-color: #f0f0f0;
-    padding: 30px 0;
-  }
-  
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  .left {
-   margin-top: -10px;
-    float: left;
-  }
-  
-  .right {
-    margin-top: -10px;
-    float: right;
-  }
-  
-  #posts {
-    margin-top: 20px;
-  }
-  
-  #posts .post {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
 
-  /* CSS for the modal overlay */
+nav {
+  background-color: rgb(135, 203, 222);
+  padding: 30px 0;
+  color: black;
+}
+
+.header_container {
+  width: 100%;
+  margin: 0 150px;
+
+
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+.left {
+  margin-top: -10px;
+  float: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#createPost {
+  margin-left: 100px;
+}
+
+#name {
+  margin-left: 500px;
+}
+
+#buttonContainer {
+  margin-right: 100px;
+}
+
+.editFormClass{
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+  /* Transparent black background */
+  display: block;
+  /* align-items: normal; */
+  /* justify-content: center; */
+}
+
+
+#posts {
+  margin-top: 20px;
+}
+
+#posts .post {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+/* CSS for the modal overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  background: rgba(0, 0, 0, 0.5);
+  /* Transparent black background */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .modal-content {
-  background: white; /* Background color for the modal content */
+  background: rgb(135, 203, 222);
+  /* Background color for the modal content */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(212, 101, 101, 0.5);
 }
 
-  
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.grid-item {
+  max-width: 600px;
+  padding: 10px;
+  background-color: black;
+  border-top: 1px whitesmoke solid;
+  display: flex;
+}
+
+.grid-item img {
+  max-width: 100px;
+  /* Adjust the max-width of the image */
+  height: 60px;
+  margin-right: 10px;
+}
+
+.grid-item-content {
+  /* flex: 1; */
+  /* color:#ccc */
+}
+
+.grid-item h3 {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.grid-item p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+}
+
+#editImageUrl{
+  width: 90%;
+  color: aqua;
+}
+
+#editTitle{
+  width: 90%;
+  color: aqua;
+}
+
+#editContent{
+  width: 90%;
+  color: aqua;
+}
+
+#saveEdit{
+  background-color: black;
+  color: aqua;
+  border: none;
+  padding: 5px;
+  margin-left: 35%;
+}
+
+.item_image{
+  max-width:50px;
+
+}
+.edit_btn{
+  background-color: black;
+  color: aqua;
+  border: none;
+  padding: 5px;
+  /* margin-left: 25%; */
+  border-radius: 6px;
+}
+.delete_btn{
+  background-color: black;
+  color: aqua;
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
+  margin-left: 2%;
+}
+
+#postImageUrl{
+  width: 90%;
+  color: aqua;
+}
+
+#postTitle{
+  width: 90%;
+  color: aqua;
+}
+
+#postContent{
+  width: 90%;
+  color: aqua;
+}
+
+#createBtn{
+  background-color: black;
+  color: aqua;
+  border: none;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 35%;
+}
