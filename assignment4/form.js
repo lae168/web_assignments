@@ -37,7 +37,7 @@ loginBtn.addEventListener("click", async function (event) {
             pwd: pwdValue
         };
         try {
-            // Make an HTTP request to validate user's credentials (replace with your server logic)
+            
             const response = await fetch('http://httpbin.org/post', {
                 method: 'POST',
                 headers: {
@@ -62,7 +62,7 @@ loginBtn.addEventListener("click", async function (event) {
         }
 
 
-        //ERROR IS OCCURING HERE!!!!!!!!!!!!
+        
         window.location.href = "landing.html";
     } else {
         if (!regexName.test(nameValue)) {
@@ -87,4 +87,4 @@ loginBtn.addEventListener("click", async function (event) {
         }
     }
 
-});
+})

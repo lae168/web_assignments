@@ -6,8 +6,9 @@ const dataDisplay = document.getElementById('dataDisplay')
 document.addEventListener('DOMContentLoaded', () => {
   const buttonContainer = document.getElementById('buttonContainer');
 
-  // Create and append the appropriate button based on whether the user is logged in
+  
   const button = document.createElement('button');
+  // if user logged in, show username and log out button
   if (localStorage.getItem('form_prj')) {
     button.innerText = 'Logout';
     let accName = document.getElementById("name");
@@ -21,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.clear();
       window.location.href = "form.html";
     });
-  } else {
+  } 
+  // if user not logged in, show log in button
+  else {
     button.innerText = 'Login';
     button.addEventListener('click', () => {
       window.location.href = "form.html";
@@ -30,29 +33,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   buttonContainer.appendChild(button);
 
-  let postData = [];
+  let postData = []; // create an array for CRUD
 
-  fetch('blog.json')
-    .then(response => response.json())
-    .then(data => {
+
+  // fetch data from local json file using async to wait till the datas get
+  async function fetchData() {
+    try {
+      const response = await fetch('blog.json');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
       postData = data.blogs.slice(-20);  // Get the last 20 posts
       displayDataList();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
-    })
-    .catch(error => console.error('Error fetching data:', error));
-
+  fetchData();
   function displayDataList() {
-
     postList.innerHTML = '';
+    //iterate the postData array with its index
     postData.forEach(post => {
       console.log("showing data");
       const postItem = document.createElement('li');
       postItem.classList.add('grid-item');
       postItem.innerHTML =
         `<img src=${post.imageUrl} alt="Post Image"><div class="grid-item-content"><p>${post.title}</p></br><p>${post.content}</p></br><p>${post.id}</p></div></br>`;
-      postItem.addEventListener('click', () => {
+      // when postItem is clicked,show detail
+        postItem.addEventListener('click', () => {
         showDetails(post);
-        // postList.style.display = "none";
+        
       });
       postList.appendChild(postItem);
     });
@@ -75,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const backIcon = document.createElement('span');
       backIcon.innerHTML = '&#8592;&nbsp;';
       backIcon.style.cursor = 'pointer';
+      
+      // when backIcon is clicked,go back to listview
       backIcon.addEventListener('click', () => {
         modalOverlay.remove();
       });
@@ -93,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemDate = document.createElement('p');
       itemDate.textContent = item.id;
 
-
+      // when edit btn is clicked, a form that asked data from the user will be seen.
       const editButton = document.createElement('button');
       editButton.classList.add('edit_btn');
       editButton.textContent = 'Edit';
@@ -149,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirmDelete) {
           postData = postData.filter(post => post.id !== item.id);
           localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
-          modalOverlay.remove();
-          displayDataList();
+          modalOverlay.remove();    //close the modal
+          displayDataList();  // Update the post list
         }
       });
 
@@ -179,102 +194,94 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function createPost() {
-    if (!localStorage.getItem('form_prj')) {
-      window.location.href = "form.html";
-    } else {
-      // Create modal overlay
-      const modalOverlay = document.createElement('div');
-      modalOverlay.classList.add('modal-overlay');
 
-      // Create modal content
-      const modalContent = document.createElement('div');
-      modalContent.classList.add('modal-content');
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.classList.add('modal-overlay');
 
-      const backIcon = document.createElement('span');
-      backIcon.innerHTML = '&#8592;&nbsp;';
-      backIcon.style.cursor = 'pointer';
-      backIcon.addEventListener('click', () => {
-        modalOverlay.remove();
-      });
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
 
-      const titleLabel = document.createElement('label');
-      titleLabel.textContent = 'Title:';
-      const titleInput = document.createElement('input');
-      titleInput.type = 'text';
-      titleInput.id = 'postTitle';
+    const backIcon = document.createElement('span');
+    backIcon.innerHTML = '&#8592;&nbsp;';
+    backIcon.style.cursor = 'pointer';
+    backIcon.addEventListener('click', () => {
+      modalOverlay.remove();
+    });
 
-      const contentLabel = document.createElement('label');
-      contentLabel.textContent = 'Content:';
-      const contentInput = document.createElement('textarea');
-      contentInput.id = 'postContent';
+    const titleLabel = document.createElement('label');
+    titleLabel.textContent = 'Title:';
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'postTitle';
 
-      const imageUrlLabel = document.createElement('label');
-      imageUrlLabel.textContent = 'Image URL (optional):';
-      const imageUrlInput = document.createElement('input');
-      imageUrlInput.type = 'text';
-      imageUrlInput.id = 'postImageUrl';
+    const contentLabel = document.createElement('label');
+    contentLabel.textContent = 'Content:';
+    const contentInput = document.createElement('textarea');
+    contentInput.id = 'postContent';
 
-      const submitButton = document.createElement('button');
-      submitButton.textContent = 'Create Post';
-      submitButton.id = 'createBtn'
-      submitButton.addEventListener('click', () => {
-        const title = titleInput.value;
-        const content = contentInput.value;
-        const imageUrl = imageUrlInput.value;
-        const timestamp = Date.now(); // Get current timestamp in milliseconds
+    const imageUrlLabel = document.createElement('label');
+    imageUrlLabel.textContent = 'Image URL (optional):';
+    const imageUrlInput = document.createElement('input');
+    imageUrlInput.type = 'text';
+    imageUrlInput.id = 'postImageUrl';
 
-        const dateObj = new Date(timestamp); // Create a Date object using the timestamp
+    const submitButton = document.createElement('button');
+    submitButton.textContent = 'Create Post';
+    submitButton.id = 'createBtn'
+    submitButton.addEventListener('click', () => {
+      const title = titleInput.value;
+      const content = contentInput.value;
+      const imageUrl = imageUrlInput.value;
+      const timestamp = Date.now(); // Get current timestamp in milliseconds
 
-        // Format the date components
-        const year = dateObj.getFullYear();
-        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Month is 0-based
-        const day = String(dateObj.getDate()).padStart(2, '0');
-        const hours = String(dateObj.getHours()).padStart(2, '0');
-        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
-        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+      const dateObj = new Date(timestamp); // Create a Date object using the timestamp
 
-        // Create a formatted date string
-        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-        const newPost = {
-          id: formattedDate,
-          title: title || 'Untitled Post',
-          content: content || 'No content available.',
-          imageUrl: imageUrl || ''
-        };
+      // Format the date components
+      const year = dateObj.getFullYear();
+      const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+      const day = String(dateObj.getDate()).padStart(2, '0');
+      const hours = String(dateObj.getHours()).padStart(2, '0');
+      const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+      const seconds = String(dateObj.getSeconds()).padStart(2, '0');
 
-        postData.unshift(newPost);
-        localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
+      // Create a formatted date string
+      const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      const newPost = {
+        id: formattedDate,
+        title: title || 'Untitled Post',
+        content: content || 'No content available.',
+        imageUrl: imageUrl || ''
+      };
 
-        displayDataList();
-        postList.scrollTop = 0;
+      postData.unshift(newPost);
+      localStorage.setItem('postData', JSON.stringify({ blogs: postData }));
 
-        // Close the modal
-        modalOverlay.remove();
-      });
-      modalContent.appendChild(backIcon);
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(titleLabel);
-      modalContent.appendChild(titleInput);
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(contentLabel);
-      modalContent.appendChild(contentInput);
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(imageUrlLabel);
-      modalContent.appendChild(imageUrlInput);
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(document.createElement('br'));
-      modalContent.appendChild(submitButton);
+      displayDataList();
+      postList.scrollTop = 0;
 
-      modalOverlay.appendChild(modalContent);
-      document.body.appendChild(modalOverlay);
-    }
+      // Close the modal
+      modalOverlay.remove();
+    });
+    modalContent.appendChild(backIcon);
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(titleLabel);
+    modalContent.appendChild(titleInput);
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(contentLabel);
+    modalContent.appendChild(contentInput);
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(imageUrlLabel);
+    modalContent.appendChild(imageUrlInput);
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(document.createElement('br'));
+    modalContent.appendChild(submitButton);
+
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
   }
-
-
-
-
-
 });
