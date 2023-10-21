@@ -13,7 +13,7 @@ nav {
 
 .header_container {
   width: 100%;
-  margin: 0 150px;
+  margin: 0 0;
 
 
 }
@@ -26,6 +26,7 @@ nav {
 
 .left {
   margin-top: -10px;
+  margin-left: 150px;
   float: left;
   display: flex;
   justify-content: space-between;

@@ -169,9 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      const createButton = document.getElementById("createPost");
-
-      createButton.addEventListener('click', createPost);
+      
 
 
       // Append elements to the modal content
@@ -194,7 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function createPost() {
-
+    if (!localStorage.getItem('form_prj')) {
+      window.location.href = "form.html";
+    } else {
     // Create modal overlay
     const modalOverlay = document.createElement('div');
     modalOverlay.classList.add('modal-overlay');
@@ -283,5 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalOverlay.appendChild(modalContent);
     document.body.appendChild(modalOverlay);
-  }
+  }}
+
+  const createButton = document.getElementById("createPost");
+
+      createButton.addEventListener('click', createPost);
 });
